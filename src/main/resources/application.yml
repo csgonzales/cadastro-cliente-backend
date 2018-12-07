@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/teste-fintech?useTimezone=true&serverTimezone=UTC
+    username: fintech
+    password: fintech
+    driver-class-name: com.mysql.cj.jdbc.Driver
