@@ -1,31 +1,46 @@
 package br.com.teste.util;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@Data
+import lombok.Getter;
+
+
+@Getter
+@JsonInclude(Include.NON_EMPTY)
 public class ApiError {
 	
-	private final HttpStatus status;
-    private final String message;
-    private final List<String> errors;
+	private HttpStatus status;
+    private String message;
+    private String error;
+    private List<String> errors;
  
+    private ApiError() {
+    	status = null;
+    	message = null;
+    	error = "";
+    	errors = Collections.emptyList();
+    }
+    
     public ApiError(HttpStatus status, String message, List<String> errors) {
-        super();
+        this();
         this.status = status;
         this.message = message;
         this.errors = errors;
     }
+    
+    
  
     public ApiError(HttpStatus status, String message, String error) {
-        super();
+        this();
         this.status = status;
         this.message = message;
-        errors = Arrays.asList(error);
+        this.error = error;
     }
 
 }
