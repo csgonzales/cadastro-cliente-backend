@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.teste.model.Risco;
 import br.com.teste.service.ClienteService;
 import br.com.teste.service.dto.ClienteDTO;
+import br.com.teste.service.dto.ClienteRespostaDTO;
 
 @RestController
 @RequestMapping("clientes")
@@ -22,7 +23,7 @@ public class ClienteController {
 	
 	
 	@PostMapping
-	public Long postCliente(@RequestBody @Valid	ClienteDTO clienteDTO) {		
+	public ClienteRespostaDTO postCliente(@RequestBody @Valid	ClienteDTO clienteDTO) {		
 		return clienteService.adicionar(clienteDTO);
 	}
 	

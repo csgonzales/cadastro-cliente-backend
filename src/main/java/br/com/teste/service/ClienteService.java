@@ -1,9 +1,10 @@
 package br.com.teste.service;
 
 import br.com.teste.service.dto.ClienteDTO;
+import br.com.teste.service.dto.ClienteRespostaDTO;
 
 public interface ClienteService {
 
-	Long adicionar(ClienteDTO clienteDTO);
+	ClienteRespostaDTO adicionar(ClienteDTO clienteDTO);
 	
 }

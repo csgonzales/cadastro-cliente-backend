@@ -8,6 +8,7 @@ import br.com.teste.model.Risco;
 import br.com.teste.repository.ClienteRepository;
 import br.com.teste.service.ClienteService;
 import br.com.teste.service.dto.ClienteDTO;
+import br.com.teste.service.dto.ClienteRespostaDTO;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -16,9 +17,11 @@ public class ClienteServiceImpl implements ClienteService {
 	ClienteRepository repository;
 	
 	@Override
-	public Long adicionar(ClienteDTO clienteDTO) {
+	public ClienteRespostaDTO adicionar(ClienteDTO clienteDTO) {
 		Cliente novoCliente = repository.save(novoCliente(clienteDTO));
-		return novoCliente.getId();
+		return ClienteRespostaDTO
+				.comId(novoCliente.getId())
+				.comTaxaJuros(novoCliente.getTaxaJuros());
 	}
 
 	/**
